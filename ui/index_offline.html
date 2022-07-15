@@ -148,8 +148,25 @@ document.body.appendChild(el);
       </div>
       <div class="icon" id="deviceSelect">
         <select id="device_selector">
+          <option value="ESP8266">ESP8266</option>
+          <option value="ESP32S2">Franzininho Wifi (ESP32S2+CircuitPython)</option>
+          <option value="ESP8266">Wemos D1 mini</option>
+          <option value="ESP32">ESP32</option>
+          <option value="ESP32basic">ESP32 (Basic)</option>
+          <option value="M5STICK">m5stick (ESP32)</option>
+          <option value="Nucleo">ST Nucleo (mBed)</option>
+          <option value="BBBlack">Beagle Bone Black</option>
+          <option value="BBC">BBC Microbit</option>
+          <option value="RPI4">Raspberry Pi (any Linux)</option>
           <option value="RPI_Pico">Raspberry Pi Pico</option>
           <option value="MakerPi">Maker Pi RP2040</option>
+          <option value="RPI_PicoETH">W5100S-EVB-Pico (RP2040)</option>
+          <option value="UNO">Arduino UNO or MEGA (Snek @ 38400)</option>
+          <option value="UNO2">Arduino UNO or MEGA (Snek @ 115200)</option>
+          <option value="EV3">Lego EV3</option>
+          <option value="pion_cansat">PION CanSat (ESP32)</option>
+          <option value="pion_cubesat">PION CubeSat (ESP32)</option>
+          <option value="vespa">RoboCore Vespa (ESP32)</option>
         </select>
         <button id="runButton" class="notext primary icon" title="..."></button>
       </div>
@@ -1758,14 +1775,13 @@ function eraseCookieModal(name) {
     </category>
 
 
-  <category name="Ultrasound">
+  <category name="%{BKY_CAT_ULTRASOUND}">
       <label text="HCSR04 ultrasound distance sensor"></label>
       <label text="Library: https://github.com/rsc1975/micropython-hcsr04"></label>
         <button text="Install HCSR04 library" callbackKey="installPyLib"></button>
 
 
       <block type="hcsr_init">
-        <field name="BLOCK_HCSR_INIT">Start HCSR04 Ultrasound sensor</field>
         <value name="echo">
           <shadow type="pinout">
             <field name="PIN"></field>
@@ -2388,7 +2404,6 @@ function eraseCookieModal(name) {
     <category name="MQTT">
       <label text="MQTT (Message Queue Telemetry Transport)"></label>
       <block type="mqtt_init">
-        <field name="BLOCK_MQTT_INIT">Start MQTT Client</field>
         <value name="server">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -2411,7 +2426,7 @@ function eraseCookieModal(name) {
         </value>
       </block>
       <block type="mqtt_add_to_buffer">
-        <field name="BLOCK_MQTT_ADD_TO_BUFFER">Add data to MQTT Buffer</field>
+
         <value name="fieldname">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -2420,7 +2435,6 @@ function eraseCookieModal(name) {
         <field name="MQTT_VALUE">Value</field>
       </block>
       <block type="mqtt_publish_buffer">
-        <field name="BLOCK_MQTT_PUBLISH">Publish Buffer to MQTT Topic</field>
         <value name="topic">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -2428,8 +2442,7 @@ function eraseCookieModal(name) {
         </value>
       </block>
       <block type="mqtt_publish_payload">
-        <field name="BLOCK_MQTT_PUBLISH">Publish Payload to MQTT Topic</field>
-        <value name="topic">
+<category name="%{BKY_CAT_ULTRASOUND}">        <value name="topic">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
@@ -2441,11 +2454,9 @@ function eraseCookieModal(name) {
         </value>
       </block>
       <block type="mqtt_set_callback">
-        <field name="BLOCK_MQTT_SET_CALLBACK">Set Callback to MQTT Messages</field>
         <field name="MQTT_CALLBACK">Callback Function</field>
       </block>
       <block type="mqtt_subscribe">
-        <field name="BLOCK_MQTT_SUBSCRIBE">Subscribe to MQTT Topic</field>
         <value name="topic">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -2453,13 +2464,13 @@ function eraseCookieModal(name) {
         </value>
       </block>
       <block type="mqtt_check_msg">
-        <field name="BLOCK_MQTT_CHECK_MSG">Check for MQTT Server messages</field>
+ 
       </block>
       <block type="mqtt_wait_msg">
-        <field name="BLOCK_MQTT_WAIT_MSG">Wait for MQTT Server messages</field>
+
       </block>
       <block type="mqtt_disconnect">
-        <field name="BLOCK_MQTT_DISCONNECT">Disconnect MQTT Client</field>
+
       </block>
     </category>
     <category name="EasyMQTT">
@@ -3965,16 +3976,16 @@ function eraseCookieModal(name) {
           </shadow>
        </value>
        <value name="left_forward">
-        <shadow type="pinout">
-          <field name="Left Forward"></field>
-        </shadow>
-     </value>
-     <value name="left_reverse">
-        <shadow type="pinout">
-          <field name="Left Reverse"></field>
-        </shadow>
-     </value>
-    </block>
+          <shadow type="pinout">
+            <field name="Left Forward"></field>
+          </shadow>
+       </value>
+       <value name="left_reverse">
+          <shadow type="pinout">
+            <field name="Left Reverse"></field>
+          </shadow>
+       </value>
+      </block>
       <block type="forward_fast"></block>
       <block type="forward_slow"></block>
       <block type="reverse_fast"></block>
@@ -4355,7 +4366,7 @@ function eraseCookieModal(name) {
 
        <value name="number">
         <shadow type="math_number">
-          <field name="NUM">8</field>
+          <field name="NUM">2</field>
         </shadow>
        </value>
       </block>
@@ -6777,7 +6788,7 @@ OFFLINE_devinfo_devinfo_json = `
 			"speed":"115200",
 			"boardID":"Maker Pi with RP2040", 
 			"img":"devinfo/media/MAKER-Pi-RP2040-Layout.png",
-			"description":"",
+			"description":"Maker Pi RP2040 used with the OptumBot",
 			"toolbox":"makerpi.xml",
 			"pinout": [
 		    ["Grove 1 / GPIO0", "0"],
@@ -6794,10 +6805,10 @@ OFFLINE_devinfo_devinfo_json = `
 		    ["Grove 6 / GPIO27", "27"],
 		    ["Grove 7 / GPIO7", "7"],
 		    ["Grove 7 / GPIO28", "28"],
-			  ["NeoPixel / GPIO18", "18"],
+			["NeoPixel / GPIO18", "18"],
 		    ["Switch / GP20", "20"],
 		    ["Switch / GP21", "21"],
-        ["Buzzer / GP22", "22"],
+			["Buzzer / GP22", "22"],
 		    ["Motor 1 / GP8", "8"],
 		    ["Motor 1 / GP9", "9"],
 		    ["Motor 2 / GP10", "10"],
