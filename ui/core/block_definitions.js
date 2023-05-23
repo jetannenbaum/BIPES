@@ -1668,8 +1668,8 @@ Blockly.Blocks['tm1637_set_temperature'] = {
     this.appendDummyInput()
       .appendField("Degrees")
       .appendField(new Blockly.FieldDropdown([
-                   ['C', 'C'],
-                   ['F', 'F']
+                   ['C', 'True'],
+                   ['F', 'False']
       ]), 'DEGREE_TYPE');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

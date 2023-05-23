@@ -806,9 +806,8 @@ Blockly.Python['tm1637_set_time'] = function(block) {
 Blockly.Python['tm1637_set_temperature'] = function(block) {
 	var temperature = Blockly.Python.valueToCode(block, 'temperature', Blockly.Python.ORDER_ATOMIC);
 	var degree = block.getFieldValue('DEGREE_TYPE');
-	var code = 'C = "C"\n'
-	code += 'F = "F"\n'
-	code += 'tm.temperature(' + temperature + ', ' + degree + ')\n';
+
+	var code = 'tm.temperature(' + temperature + ', ' + degree + ')\n';
 	return code;
 }
 
